@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>BBQ 进度表编辑器 - 专业版</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+    <div class="editor-side">
+        <div class="header">
+            <h1>BBQ 图表编辑器</h1>
+            
+            <div class="control-group">
+                <label>项目总标题</label>
+                <input type="text" id="proj-title" value="新项目进度总览" oninput="updateChart()">
+            </div>
+
+            <div class="timeline-config control-group">
+                <label>📍 时间线日期 (垂直虚线)</label>
+                <div class="timeline-input-wrapper">
+                    <input type="checkbox" id="enable-timeline" checked onchange="updateChart()">
+                    <input type="date" id="target-date" value="2026-02-15" onchange="updateChart()">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>🎨 选择配色方案</label>
+                <div class="theme-picker">
+                    <div class="theme-option active" onclick="setTheme('sanofi')">
+                        <span style="background:#d8b4fe"></span><span style="background:#78cfa0"></span><span style="background:#7030A0"></span>
+                    </div>
+                    <div class="theme-option" onclick="setTheme('sweet')">
+                        <span style="background:#ffc0cb"></span><span style="background:#a0c4ff"></span><span style="background:#ffd166"></span>
+                    </div>
+                    <div class="theme-option" onclick="setTheme('forest')">
+                        <span style="background:#74c69d"></span><span style="background:#2d6a4f"></span><span style="background:#081c15"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-actions">
+                <button class="btn btn-add-sec" onclick="addSection()">+ 添加新板块 (Section)</button>
+                <button class="btn btn-download" id="btn-download">下载高清图片</button>
+            </div>
+        </div>
+        
+        <div class="scroll-area" id="editor-container">
+            </div>
+    </div>
+
+    <div class="preview-side">
+        <h2 class="preview-title">实时预览</h2>
+        <div class="chart-scroll-container">
+            <div id="chart-wrapper">
+                <div class="mermaid" id="mermaid-render"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

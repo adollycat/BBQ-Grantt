@@ -1,0 +1,32 @@
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'primaryColor': '#D1C4E9',
+    'sectionBkgColor': '#F3E5F5',
+    'todayLineColor': '#7B1FA2'
+  },
+  'gantt': {
+    'barHeight': 35,
+    'barGap': 8
+  },
+  'cssStyles': '
+    rect.task { rx: 8; ry: 8; }
+    rect.active { fill: #D1C4E9 !important; stroke: #9575CD !important; }
+    rect.done { fill: #A5D6A7 !important; stroke: #2E7D32 !important; }
+    rect.crit { fill: #7B1FA2 !important; stroke: #4A148C !important; }
+    .taskText { fill: #000 !important; font-weight: bold; }
+  '
+}}%%
+
+gantt
+    title Sanofi 风格内嵌样式测试
+    dateFormat  YYYY-MM-DD
+    axisFormat  %m-%d
+    todayMarker 2026-02-15
+
+    section Non-Clinical
+    M4数据整理        :active, t1, 2026-02-10, 10d
+    毒理实验报告      :done,   t2, 2026-02-05, 15d
+
+    section Clinical Phase
+    临床一期入组      :crit,   t3, 2026-02-15, 20d
